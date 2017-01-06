@@ -1,0 +1,22 @@
+.character-list-container img {
+  width: 100%;
+}
+
+.character-list-container li {
+  line-height: 20px;
+}
+
+.character-image-container {
+  float: left;
+  width: 25%;
+}
+
+.character-text-container {
+  float: right;
+  width: 75%;
+  padding-left: 50px;
+}
+
+.clearFix {
+  clear: both;
+}

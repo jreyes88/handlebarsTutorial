@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Handlebars Training</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Game of Thrones</h1>
+    </div>
+
+    <ul class="character-list-container list-group">
+    </ul>
+
+  </div>
+
+  <script id="character-template" type="text/x-handlebars-template">
+    {{#each characters}}
+      <li class="character list-group-item">
+        <div class="character-image-container">
+          <img src="images/{{shortCode}}.jpg">
+        </div>
+        {{> characterDetailsPartial}}
+        <div class="clearFix">
+        </div>
+        <a href="cast-details.html?id={{@index}}" class="btn btn-default view-details">View Details</a>
+      </li>
+    {{/each}}
+  </script>
+
+  <script id="character-details-partial" type="text/x-handlebars-template">
+    <div class="character-text-container">
+      <h2>
+        {{name}}
+      </h2>
+      {{formatName name house.seat}}
+      <p>
+        {{formatPhoneNumber house.phone}}
+      </p>
+      <p>
+        Actor: {{actor}}
+      </p>
+      {{#with house}}
+        {{#if name}}
+          <p>
+            House: 
+              {{#makeUnderlined}}{{name}}{{/makeUnderlined}}
+          </p>
+        {{/if}}
+        {{#if seat}}
+          <p>Seat: {{seat}}</p>
+        {{/if}}
+        {{#if words}}
+          <p>Words: {{words}}</p>
+        {{/if}}
+      {{/with}}
+      {{#if location}}
+        <p>Whereabouts: {{#makeLowercase}}{{location}}{{/makeLowercase}}</p>
+      {{/if}}
+
+      {{#unless location}}
+        <p>Whereabouts are unknwon...</p>
+      {{/unless}}
+    </div>
+    <div class="clearFix">
+    </div>
+  </script>
+
+  <script src='js/jquery-3.1.1.min.js'></script>
+  <script src='js/handlebars-v4.0.5.js'></script>
+  <script src='js/scripts.js'></script>
+</body>
+</html>
